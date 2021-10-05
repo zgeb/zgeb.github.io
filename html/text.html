@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>文字处理</title>
+</head>
+<head>
+<script>
+function ZhuanHuan()
+{
+  var intext = document.getElementById("inputbox");
+  var text = intext.value;
+  var txl= text.length;
+  var otx=new String();
+  for (var i=0;i<txl;i++)
+  {
+    //alert(text[i].charCodeAt());
+	if (text[i].charCodeAt()>=65278&&text[i].charCodeAt()<=65370)
+	{
+	  if (text[i].charCodeAt()==65292||text[i].charCodeAt()==65307)
+	  {
+	     if (text[i+1].charCodeAt()>=65278&&text[i+1].charCodeAt()<=65370&&text[i-1].charCodeAt()>=65278&&text[i-1].charCodeAt()<=65370)
+		 {
+		    t=String.fromCharCode(text[i].charCodeAt()-65248);
+		 }
+		 else {
+		    t=text[i];
+		 }
+	  }
+	  else {
+	  //alert("123");
+	  t=String.fromCharCode(text[i].charCodeAt()-65248);
+	  }
+	  //alert(String.fromCharCode(text[i].charCodeAt()-65248));
+	}
+    else if (text[i].charCodeAt()==10)
+	{
+	  continue;
+	}
+	else if (text[i].charCodeAt()==32)
+	{
+	  continue;
+	}
+    else
+	{
+	  t=text[i];
+	}
+	otx=otx+t;
+  }
+  document.getElementById("outputbox").value=otx;
+  document.getElementById("tips").innerHTML="";
+}
+function QingKong(){
+  document.getElementById("inputbox").value="";
+}
+function FuZhi()
+{
+  var outtext = document.getElementById("outputbox");
+  var text = outtext.value;
+  //alert(text);
+  outtext.select(); // 选择对象
+  document.execCommand("Copy"); // 执行浏览器复制命令
+  document.getElementById("tips").innerHTML="已复制好，可贴粘。";
+  //alert("已复制好，可贴粘。");
+  //var flag=copyText(text);
+  //alert(flag);
+  //alert("抱歉，该功能还未实现！");
+}
+</script>
+</head>
+<body>
+<h1>待处理文字</h1>
+<textarea name="str" cols="90" rows="10" class="form-textarea form-block" id="inputbox" placeholder="请把你需要转换的内容粘贴在这里"  style="margin: 0px 0px 0px 0px; width: 80%; height: 249px;"></textarea>
+<input type="button" onclick="ZhuanHuan()" value="转换">
+<input type="button" onclick="QingKong()" value="清空">
+<h1>转换结果</h1>
+<textarea name="str" cols="90" rows="10" class="form-textarea form-block" id="outputbox" placeholder="点击【转换】按钮后，这里将出现转换结果，点击【复制】按钮后将会复制本文本区域的内容" style="margin: 0px 0px 0px 0px; width: 80%; height: 249px;"></textarea>
+<input type="button" onclick="FuZhi()" value="复制">
+<p id="tips"></p>
+</body>
+</html>
