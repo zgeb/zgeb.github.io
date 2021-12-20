@@ -171,8 +171,20 @@
       "_originRe": {}
     },
     {
+      "description": "微博手机版",
+      "origin": "https://weibo.cn/",
+      "exclude": "",
+      "methods": [],
+      "types": [],
+      "target": "https://zgeb.github.io/notice/index.html?",
+      "example": "https://weibo.cn",
+      "enable": true,
+      "process": "",
+      "_originRe": {}
+    },
+    {
       "description": "微博",
-      "origin": "https://weibo.com/",
+      "origin": "https://www.weibo.com/",
       "exclude": "",
       "methods": [],
       "types": [],
